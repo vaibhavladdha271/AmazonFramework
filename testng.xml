@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org" >
+<suite name="My Suite">
+    <parameter name="browser" value="chrome" />
+    <test name="Amazon Tests">
+        <classes>
+            <class name="HomePageTest"/>
+            <class name="MobilesPageTest"/>
+        </classes>
+    </test>
+</suite>
