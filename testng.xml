@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org" >
-<suite name="My Suite">
+<suite name="My Suite" parallel="methods" thread-count="2">
     <parameter name="browser" value="chrome" />
     <test name="Amazon Tests">
         <classes>

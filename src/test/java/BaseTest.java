@@ -14,7 +14,7 @@ public class BaseTest {
 
     @Parameters("browser")
     @BeforeMethod
-    public void initialize(@Optional String browser) {
+    public void initialize(@Optional("chrome") String browser) {
         DriverFactory.initDriver(browser);
         driver=DriverFactory.getDriver();
          homePage=new HomePage(driver);

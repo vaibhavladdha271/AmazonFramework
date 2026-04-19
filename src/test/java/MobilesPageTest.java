@@ -23,7 +23,29 @@ public class MobilesPageTest extends BaseTest {
     @Test(priority = 3)
     public void validateDellPageTitle(){
         mobilePage=homePage.clickOnMobileMenu();
-        String dellPageTitle=mobilePage.clickOnDellLink("Laptops & Accessories","Dell");
+        String dellPageTitle=mobilePage.getDellPageTitle("Laptops & Accessories","Dell");
         Assert.assertEquals("Buy Dell Laptop Online at Best Price In India - Amazon.in",dellPageTitle);
+    }
+
+    @Test(priority = 4)
+    public void clickOnFirstDellProduct(){
+        mobilePage=homePage.clickOnMobileMenu();
+        mobilePage.clickOnDellLink("Laptops & Accessories","Dell");
+        mobilePage.clickOnFirstDellProduct();
+    }
+
+    @Test(priority=5)
+    public void clickOnFirstDellProductAndSwitchToDellProduct(){
+        mobilePage=homePage.clickOnMobileMenu();
+        mobilePage.clickOnDellLink("Laptops & Accessories","Dell");
+        mobilePage.clickOnProduct();
+    }
+
+    @Test(priority = 6)
+    public void verifyProductAmount(){
+        mobilePage=homePage.clickOnMobileMenu();
+        mobilePage.clickOnDellLink("Laptops & Accessories","Dell");
+        mobilePage.clickOnProduct();
+        System.out.println(mobilePage.getProductAmount());
     }
 }

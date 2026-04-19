@@ -9,23 +9,16 @@ import utilities.ScreenshotUtil;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MobilesPage extends BasePage {
+public class ProductPage extends BasePage {
 
-    private static By menuItemsLocator= By.xpath("//div[@id='nav-subnav']/ul/li");
-    private static String menuItemLocator="//span[contains(text(),'$$')]";
-    private static String subMenuItemLocator="//a[text()='$$']";
-    private static By searchField=By.id("twotabsearchtextbox");
-    private static By laptopProductListLocator=By.xpath("//div[@data-cy='title-recipe']/a");
-    private static By loaderLocator=By.xpath("//div[@id='nav-cover']");
-    private static By searchButtonLocator=By.xpath("//input[@id='nav-search-submit-button']");
     private static By productAmountLocator=By.xpath("(//span[@class='a-price-whole'])[1]");
 
-    public MobilesPage(WebDriver driver){
+    public ProductPage(WebDriver driver){
         super();
         this.driver=driver;
     }
 
-    public String getMobilePageTitle(){
+    public String getProductPageTitle(){
         wait.until(ExpectedConditions.titleContains("Mobile Phones"));
         return driver.getTitle();
     }
@@ -72,7 +65,7 @@ public class MobilesPage extends BasePage {
     public void clickOnProduct() {
         clickOnFirstDellProduct();
         switchToWindow();
-        return new ProductsPage(driver);
+        return new ProductsPage();
 
     }
 

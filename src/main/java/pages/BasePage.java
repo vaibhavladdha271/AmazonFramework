@@ -10,7 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.DriverFactory;
 
 import java.time.Duration;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class BasePage {
     protected WebDriver driver;
@@ -47,6 +49,9 @@ public class BasePage {
         wait.until(ExpectedConditions.titleIs(title));
     }
 
+    public void waitForInvisibilityOfElement(By locator){
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
     public List<WebElement> getListOfItems(By locator){
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
@@ -54,5 +59,20 @@ public class BasePage {
     public void clickOnELementUsingActions(By locator){
         Actions actions=new Actions(driver);
         actions.moveToElement(driver.findElement(locator)).click(driver.findElement(locator)).build().perform();
+    }
+
+    public void clickOnELementUsingActions(WebElement element){
+        Actions actions=new Actions(driver);
+        actions.moveToElement(element).click(element).build().perform();
+    }
+
+    public void switchToWindow(){
+        Set<String> windows=driver.getWindowHandles();
+        Iterator<String> iterator=windows.iterator();
+        String parentWindow=iterator.next();
+        while(iterator.hasNext()){
+            String childWindow=iterator.next();
+            driver.switchTo().window(childWindow);
+        }
     }
 }
